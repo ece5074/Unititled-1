@@ -20,5 +20,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/users', require('./api/users'));
+app.use('/register', require('./api/register'));
 
 module.exports = app;

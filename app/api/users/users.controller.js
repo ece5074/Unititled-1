@@ -1,14 +1,7 @@
-const Pool = require('mysql2');
-const dbconn = require('../../models/dbconnection');
+const userDAO = require('./userDAO');
 
-//All data search
-module.exports.index = async function(req, res) {
-    const allDataSearch = "SELECT * FROM USERS";
-    dbconn.query(allDataSearch, function(err, ret, fields){
-        if(err) return;
-        console.log(ret);
-        console.log(fields);
-
-        res.send(fields);
-    })
-}
+module.exports.index = userDAO.indexUser
+module.exports.show = userDAO.showUser
+module.exports.add = userDAO.addUser
+module.exports.delete = userDAO.deleteUser
+module.exports.put = userDAO.editUser
