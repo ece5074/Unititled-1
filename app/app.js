@@ -19,7 +19,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/users', require('./api/users'));
-app.use('/register', require('./api/register'));
+app.use('/api/users', require('./api/users'));
+app.use('/api/rooms', require('./api/rooms'));
+
+app.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 
 module.exports = app;
